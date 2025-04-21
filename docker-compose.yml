@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - devsecquest-network
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=devsecquest
+      - DB_PASSWORD=devsecquest
+      - DB_NAME=devsecquest
+      - WAIT_HOSTS=db:5432
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=10
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+    depends_on:
+      - db
+    networks:
+      - devsecquest-network
+
+  db:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=devsecquest
+      - POSTGRES_PASSWORD=devsecquest
+      - POSTGRES_DB=devsecquest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devsecquest"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - devsecquest-network
+
+  challenge-env:
+    build: ./challenges/ci-cd-security
+    ports:
+      - "8080:8080"
+    environment:
+      - JENKINS_HOME=/var/jenkins_home
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    volumes:
+      - jenkins_data:/var/jenkins_home
+    networks:
+      - devsecquest-network
+
+networks:
+  devsecquest-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  jenkins_data: 

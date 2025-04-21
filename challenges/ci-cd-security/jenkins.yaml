@@ -1,0 +1,46 @@
+jenkins:
+  systemMessage: "DevSecQuest CI/CD Security Challenge Environment"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "admin"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: true
+  
+  nodes:
+    - permanent:
+        name: "built-in"
+        remoteFS: "/var/jenkins_home"
+        launcher:
+          jnlp:
+            workDirSettings:
+              disabled: true
+              failIfWorkDirIsMissing: false
+              internalDir: "remoting"
+              workDirPath: "/var/jenkins_home/worker"
+
+  clouds: []
+  
+  credentials:
+    system:
+      domainCredentials:
+        - credentials:
+            - usernamePassword:
+                scope: GLOBAL
+                id: "vulnerable-creds"
+                username: "deploy-user"
+                password: "super-secret-password"
+                description: "Vulnerable deployment credentials"
+
+  # Add initialization settings
+  numExecutors: 2
+  mode: NORMAL
+  primaryView: all
+  quietPeriod: 5
+  scmCheckoutRetryCount: 0
+  views:
+    - all:
+        name: "all" 
