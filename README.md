@@ -1,10 +1,10 @@
-# DevSecQuest
+# Gamify-ITSec
 
 An open-source, gamified learning platform for cybersecurity professionals transitioning to DevSecOps.
 
 ## Overview
 
-DevSecQuest is designed to help cybersecurity professionals acquire DevSecOps skills through hands-on challenges and gamified learning experiences. The platform runs locally using Docker and Kubernetes, ensuring data privacy and control.
+Gamify-ITSec is designed to help cybersecurity professionals acquire DevSecOps skills through hands-on challenges and gamified learning experiences. The platform runs locally using Docker and Kubernetes, ensuring data privacy and control.
 
 ## Features
 
@@ -36,7 +36,7 @@ DevSecQuest is designed to help cybersecurity professionals acquire DevSecOps sk
 ## Project Structure
 
 ```
-devsecquest/
+Gamify-ITSec/
 ├── frontend/         # React-based frontend application
 ├── backend/          # Node.js/Python backend services
 ├── kubernetes/       # Kubernetes manifests and configurations
@@ -55,8 +55,8 @@ devsecquest/
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/devsecquest.git
-   cd devsecquest
+   git clone https://github.com/yourusername/Gamify-ITSec.git
+   cd Gamify-ITSec
    ```
 
 2. **Verify Prerequisites**:
@@ -91,7 +91,7 @@ devsecquest/
 4. **Access the Application**:
    ```bash
    # Get the frontend service URL
-   minikube service devsecquest-frontend
+   minikube service Gamify-ITSec-frontend
    ```
 
 ## Detailed Setup Instructions
