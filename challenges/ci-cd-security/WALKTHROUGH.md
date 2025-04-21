@@ -11,8 +11,8 @@ Before starting this challenge, make sure you have:
 ### Initial Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/devsecquest.git
-   cd devsecquest
+   git clone https://github.com/yourusername/Gamify-ITSec.git
+   cd Gamify-ITSec
    ```
 
 2. Verify your Docker installation:
