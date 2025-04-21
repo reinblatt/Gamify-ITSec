@@ -11,8 +11,8 @@ Before starting this challenge, make sure you have:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/devsecquest.git
-cd devsecquest
+git clone https://github.com/reinblatt/Gamify-ITSec.git
+cd Gamify-ITSec
 ```
 
 ### 2. Verify Docker Installation
@@ -27,7 +27,7 @@ docker-compose --version
 ### 3. Start the Challenge Environment
 ```bash
 # Navigate to the project root directory
-cd devsecquest
+cd Gamify-ITSec
 
 # Start the Jenkins container
 docker-compose up -d challenge-env
